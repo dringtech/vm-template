@@ -1,0 +1,50 @@
+{
+  "variables": {
+    "centos_version": null,
+    "centos_mirror": null,
+    "centos_iso": null,
+    "iso_checksum": null,
+    "iso_checksum_type": "sha256"
+  },
+  "builders": [
+    {
+      "name": "centos_{{ user `centos_version` }}_vbox",
+      "type": "virtualbox-iso",
+      "headless": true,
+      "guest_os_type": "RedHat_64",
+      "iso_url": "{{user `centos_mirror`}}/{{user `centos_iso`}}",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_checksum_type": "{{user `iso_checksum_type`}}",
+      "ssh_username": "packer",
+      "ssh_password": "packer",
+      "ssh_timeout": "20m",
+      "ssh_pty" : "true",
+      "floppy_files": [
+        "boot/kickstart.cfg"
+      ],
+      "boot_command": [
+        "<tab> text ks=hd:fd0:/kickstart.cfg ip=dhcp<enter><wait>"
+      ],
+      "shutdown_command": "echo 'packer' | sudo -S shutdown -P now"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command": "echo 'packer' | sudo -S sh '{{.Path}}'",
+      "scripts": [
+        "scripts/sudoers.sh",
+        "scripts/vagrant.sh",
+        "scripts/virtualbox.sh",
+        "scripts/cleanup.sh"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "only": [ "centos_{{ user `centos_version` }}_vbox" ],
+      "compression_level": 9
+    }
+  ]
+}
