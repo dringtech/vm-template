@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 #clean yum cache
 /usr/bin/yum clean all
 #remove udev hardware rules
