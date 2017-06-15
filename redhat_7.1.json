@@ -1,0 +1,8 @@
+{
+ "os_name": "rhel",
+ "os_version": "7.1",
+ "os_mirror": "/Users/gilesdring/Documents/DWP/CHS/Code/rhel",
+ "os_iso": "rhel-server-7.1-x86_64-dvd.iso",
+ "iso_checksum": "370662c78e36528bbaf3f2b901c29d6f",
+ "iso_checksum_type": "md5"
+}
