@@ -6,6 +6,6 @@ cat - <<REPO > /etc/yum.repos.d/temp_local.repo
 mediaid=$(head -1 /mnt/dvd/.discinfo)
 name=Local Repository
 baseurl=file:///mnt/dvd
-enabled=1
+enabled=0
 gpgcheck=0
 REPO

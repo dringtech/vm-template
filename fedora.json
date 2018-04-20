@@ -39,7 +39,8 @@
         "scripts/sudoers.sh",
         "scripts/vagrant.sh",
         "scripts/virtualbox.sh",
-        "scripts/cleanup.sh"
+        "scripts/cleanup.sh",
+        "scripts/remove_packer.sh"
       ]
     }
   ],
