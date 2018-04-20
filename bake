@@ -1,8 +1,25 @@
 PACKER=/usr/local/bin/packer
 
 function build {
-  ${PACKER} build -var-file=centos_7.3.json centos.json
-  vagrant box add ./packer_centos_7.3_vbox_virtualbox.box --name dringtech/centos/7.3
+  local os version
+  os=$1
+  variant=$2
+  [ -z $os ] && echo Please provide an os name && exit 1
+  [ -z $variant ] && echo Please provide an os variant && exit 1
+  ${PACKER} build -var-file=${variant}.json ${os}.json
 }
 
-build
+function load {
+  vagrant box add ./packer_rhel_7.1_vbox_virtualbox.box --name dringtech/rhel/7.1 --force
+}
+
+case $1 in
+  build)
+    build $2 $3
+    ;;
+  load)
+    load $2
+    ;;
+  *)
+    ;;
+esac
