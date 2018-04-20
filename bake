@@ -13,7 +13,7 @@ function load {
   local os version
   os=$1
   version=$2
-  vagrant box add ./packer_${os}_${version}_vbox_virtualbox.box --name dringtech/${os}/${version} --force
+  vagrant box add ./packer_${os}_${version}_vbox_virtualbox.box --name dringtech/${os}-${version} --force
 }
 
 case $1 in
