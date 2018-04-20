@@ -5,14 +5,15 @@
     "os_mirror": null,
     "os_iso": null,
     "iso_checksum": null,
-    "iso_checksum_type": "sha256"
+    "iso_checksum_type": "sha256",
+    "guest_os": "Fedora_64"
   },
   "builders": [
     {
       "name": "{{ user `os_name` }}_{{ user `os_version` }}_vbox",
       "type": "virtualbox-iso",
       "headless": true,
-      "guest_os_type": "RedHat_64",
+      "guest_os_type": "{{ user `guest_os` }}",
       "iso_url": "{{user `os_mirror`}}/{{user `os_iso`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
