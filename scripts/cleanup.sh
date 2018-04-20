@@ -10,6 +10,7 @@ set -e
 #remove host keys (important step security wise.  similar to system GUID in Windows)
 /bin/rm /etc/ssh/ssh_host_*
 #engage logrotate to shrink logspace used
+yum --assumeyes install logrotate
 /usr/sbin/logrotate -f /etc/logrotate.conf
 # Load the keys
 for file in /etc/pki/rpm-gpg/RPM-GPG-KEY-*
