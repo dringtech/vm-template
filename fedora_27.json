@@ -1,8 +1,7 @@
 {
  "os_name": "fedora",
  "os_version": "27",
- "os_mirror": "https://download.fedoraproject.org/pub/fedora/linux/releases/27/Server/x86_64/iso/",
+ "os_mirror": "https://download.fedoraproject.org/pub/fedora/linux/releases/27/Server/x86_64/iso",
  "os_iso": "Fedora-Server-dvd-x86_64-27-1.6.iso",
- "iso_checksum": "e383dd414bb57231b20cbed11c4953cac71785f7d4f5990b0df5ad534a0ba95c",
- "guest_os": "RedHat_64"
+ "iso_checksum": "e383dd414bb57231b20cbed11c4953cac71785f7d4f5990b0df5ad534a0ba95c"
 }
