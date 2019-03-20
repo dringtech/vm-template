@@ -1,0 +1,7 @@
+{
+ "os_name": "fedora",
+ "os_version": "28",
+ "os_mirror": "https://download.fedoraproject.org/pub/fedora/linux/releases/28/Server/x86_64/iso",
+ "os_iso": "Fedora-Server-dvd-x86_64-28-1.1.iso",
+ "iso_checksum": "8d59a25052e05758c15fe9daa3bc472b5619791b442e752450bba7f1eeca9c1a"
+}

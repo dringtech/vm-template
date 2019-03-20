@@ -1,0 +1,7 @@
+{
+ "os_name": "fedora",
+ "os_version": "29",
+ "os_mirror": "https://download.fedoraproject.org/pub/fedora/linux/releases/29/Server/x86_64/iso",
+ "os_iso": "Fedora-Server-dvd-x86_64-29-1.2.iso",
+ "iso_checksum": "129d131a55e5bd518f593f0eacdce095f7c795fe7ccbef1f3f6aeb2ff9f99f35"
+}
