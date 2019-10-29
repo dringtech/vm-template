@@ -1,0 +1,54 @@
+{
+  "variables": {
+    "os_name": null,
+    "os_version": null,
+    "os_mirror": null,
+    "os_iso": null,
+    "iso_checksum": null,
+    "iso_checksum_type": "sha256",
+    "guest_os": "Fedora_64"
+  },
+  "builders": [
+    {
+      "name": "{{ user `os_name` }}_{{ user `os_version` }}_vbox",
+      "type": "virtualbox-iso",
+      "headless": true,
+      "guest_os_type": "{{ user `guest_os` }}",
+      "iso_url": "{{user `os_mirror`}}/{{user `os_iso`}}",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_checksum_type": "{{user `iso_checksum_type`}}",
+      "ssh_username": "packer",
+      "ssh_password": "packer",
+      "ssh_timeout": "20m",
+      "ssh_pty" : "true",
+      "floppy_files": [
+        "boot/kickstart.cfg"
+      ],
+      "boot_command": [
+        "<tab> text ks=hd:fd0:/kickstart.cfg ip=dhcp<enter><wait>"
+      ],
+      "shutdown_command": "echo 'packer' | sudo -S shutdown -P now"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command": "echo 'packer' | sudo -S sh '{{.Path}}'",
+      "scripts": [
+        "scripts/dvdrepo.sh",
+        "scripts/sudoers.sh",
+        "scripts/vagrant.sh",
+        "scripts/virtualbox.sh",
+        "scripts/cleanup.sh",
+        "scripts/remove_packer.sh"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "only": [ "{{ user `os_name` }}_{{ user `os_version` }}_vbox" ],
+      "compression_level": 9
+    }
+  ]
+}
